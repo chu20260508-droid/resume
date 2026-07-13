@@ -743,7 +743,7 @@
           <h1>郭文龙<br>Ike Guo</h1>
           <p class="subtitle">Agent 开发工程师 · 大模型应用开发 · 数据工程背景</p>
           <p class="summary">
-            8 年工程经验，具备银行数仓、ETL、BI 与财务模型建设经验，近阶段聚焦 AI Agent、RAG、LangGraph 流程编排与企业内部智能问答平台建设。
+            8 年工程经验，具备银行数仓、ETL、BI 与财务模型建设经验，近阶段聚焦 AI Agent、RAG、LangGraph 流程编排、Dify 工作流与企业内部智能问答平台建设。
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#project">查看核心项目</a>
@@ -773,7 +773,7 @@
             <div class="section-kicker">Profile Snapshot</div>
             <h2 id="overview-title">从数据工程到 AI 应用落地</h2>
           </div>
-          <p class="section-note">兼具金融业务数据处理经验与大模型应用工程能力，适合企业知识库、Agent 工作流与智能问答平台建设。</p>
+          <p class="section-note">兼具金融业务数据处理经验与大模型应用工程能力，适合企业知识库、Agent 工作流、RAG 检索增强与智能问答平台建设。</p>
         </div>
         <div class="metric-grid">
           <div class="metric"><strong>8+</strong><span>年工程交付经验</span></div>
@@ -802,6 +802,7 @@
               <span class="tag">Tools 调用</span>
               <span class="tag">Function Calling</span>
               <span class="tag">MCP 调用</span>
+              <span class="tag">RAG 开发</span>
               <span class="tag">任务规划</span>
               <span class="tag">结果观察</span>
             </div>
@@ -813,6 +814,7 @@
               <span class="tag green">LangChain</span>
               <span class="tag green">Dify</span>
               <span class="tag green">RAG</span>
+              <span class="tag green">Transformer</span>
               <span class="tag green">Prompt Engineering</span>
               <span class="tag green">Structured Output</span>
             </div>
@@ -841,21 +843,21 @@
         <div class="section-head">
           <div>
             <div class="section-kicker">Featured Project</div>
-            <h2 id="project-title">基金公司内部智能知识问答平台</h2>
+            <h2 id="project-title">基金智能知识问答平台</h2>
           </div>
-          <p class="section-note">以 LangGraph 编排复杂问答流程，用 LangChain 承载模型、Prompt、Retriever 与 Tool 组件能力。</p>
+          <p class="section-note">以 LangGraph 编排复杂问答流程，用 LangChain 承载模型、Prompt、Retriever 与 Tool 组件能力，结合结构化查询与 RAG 检索提升问答准确性。</p>
         </div>
 
         <div class="project-layout">
           <article class="project-main">
             <div class="project-meta">
-              <span>2026-03 ~ 2026-06</span>
-              <span>AI 应用开发</span>
+              <span>2026-03 ~ 2026-05</span>
+              <span>设计开发岗</span>
               <span>金融知识问答</span>
             </div>
             <h3>项目概述</h3>
             <p>
-              为基金公司内部产品、投顾、运营、合规等岗位建设智能知识问答平台，统一接入基金产品资料、制度文档、会议纪要、合规说明、业务流程和 FAQ 等知识源。系统支持自然语言提问，并根据问题类型自动选择结构化查询或 RAG 检索问答，返回答案和来源依据，解决内部知识分散、查询效率低、业务口径不一致和答案不可追溯等问题。
+              为内部基金产品、投顾、运营、合规等业务岗位建设智能知识问答平台，统一接入基金产品资料、制度文档、会议纪要、合规说明、业务流程和 FAQ 等知识源。系统支持自然语言提问，并根据问题类型自动选择结构化查询或 RAG 检索问答，返回答案和来源依据，解决内部知识分散、查询效率低、业务口径不一致和答案不可追溯等问题。
             </p>
 
             <div class="flow" aria-label="LangGraph 流程节点">
@@ -867,14 +869,14 @@
 
             <h3>责任描述</h3>
             <ul class="clean-list">
-              <li>参与问答平台后端设计与开发，基于 FastAPI 封装内部问答 API，支持前端系统和内部运营平台调用。</li>
-              <li>基于 LangGraph 设计 fact_query / rag_query 双链路架构，将问题路由、结构化查询、RAG 检索、多意图拆分、答案聚合和来源追踪设计为图节点。</li>
+              <li>参与问答平台后端设计与开发，基于 FastAPI 封装内部问答 API，调用 LangGraph 与结构化查询 API 连库查询业务数据，支持前端系统和内部运营平台调用。</li>
+              <li>基于 LangGraph 设计 fact_query / rag_query 双链路架构，将记忆加载、问题预处理、多意图拆分与识别、子问题执行、溯源检查、答案聚合、记忆保存设计为图节点。</li>
               <li>针对费率、产品代码、生效日期等确定性问题，分流至结构化查询链路，通过 Oracle 或业务工具返回准确结果，避免大模型生成关键业务字段。</li>
-              <li>针对制度解释、业务流程、合规说明等复杂问题，分流至 RAG 检索增强问答链路，基于 BGE Embedding + Milvus 实现知识片段召回。</li>
-              <li>基于 LangGraph 实现上下文问题改写、条件路由、多意图拆分和结果聚合，支持复合问题拆解后分别进入 fact_query 或 rag_query 链路。</li>
-              <li>基于 LangChain 封装 Qwen、Prompt、Retriever 和 Tool 组件，包括费率查询、产品基础信息查询、来源文档查询等工具能力。</li>
+              <li>针对制度解释、业务流程、合规说明等复杂问题，分流至 RAG 检索增强问答链路，基于 BGE Embedding / Milvus + BM25 / Elasticsearch + RRF 融合排序实现知识片段召回。</li>
+              <li>基于 LangGraph 结合上下文进行问题改写、预处理、意图拆分及子意图识别，子问题按条件路由进入 fact_query 或 rag_query 链路。</li>
+              <li>基于 LangChain 封装 DeepSeek、Prompt、Retriever 和 Tool 组件，包括产品费率、风险等级、产品基础信息、合规文档、业务流程和来源文档查询等工具能力。</li>
               <li>设计答案来源追踪与校验机制，返回来源文档、章节、版本、生效日期等信息，满足金融场景下的可解释和可追溯要求。</li>
-              <li>参与 Prompt 分层设计，将路由识别、参数解析、多意图拆分、RAG 回答、答案聚合拆成独立 Prompt，降低链路复杂度并提升输出稳定性。</li>
+              <li>设置最大图执行步数、最大调用深度、服务调用方向限制、调用白名单及 timeout + retry 机制，防止循环调用并保护企业级数据安全边界。</li>
             </ul>
           </article>
 
@@ -886,9 +888,11 @@
               <span class="tag">Pydantic</span>
               <span class="tag">LangGraph</span>
               <span class="tag">LangChain</span>
-              <span class="tag">Qwen</span>
+              <span class="tag">DeepSeek</span>
               <span class="tag">BGE Embedding</span>
               <span class="tag">Milvus</span>
+              <span class="tag">BM25</span>
+              <span class="tag">Elasticsearch</span>
               <span class="tag">Oracle</span>
               <span class="tag">Prompt Engineering</span>
               <span class="tag">Structured Output</span>
@@ -916,13 +920,13 @@
 
         <div class="timeline">
           <article class="timeline-item">
-            <div class="period">2025-11 ~ 2026-06</div>
+            <div class="period">2026-03 ~ 2026-05</div>
             <div>
               <div class="timeline-title">
-                <h3>XXXX</h3>
-                <span class="role">大模型应用开发</span>
+                <h3>基金智能知识问答平台</h3>
+                <span class="role">设计开发岗</span>
               </div>
-              <p>聚焦企业内部智能问答、Agent 流程编排、RAG 检索增强和大模型应用工程化落地。</p>
+              <p>负责企业内部智能问答、LangGraph 流程编排、RAG 检索增强、结构化查询双链路和来源追踪能力建设。</p>
               <div class="tags">
                 <span class="tag">LangGraph</span>
                 <span class="tag">LangChain</span>
@@ -933,7 +937,7 @@
           </article>
 
           <article class="timeline-item">
-            <div class="period">2021-07 ~ 2025-11</div>
+            <div class="period">2021-07 ~ 2026-06</div>
             <div>
               <div class="timeline-title">
                 <h3>招商永隆银行（外派）</h3>
